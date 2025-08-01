@@ -103,6 +103,58 @@ const resources = {
           heritage: "Heritage",
           nature: "Nature",
           dining: "Dining"
+        },
+        landmarks: {
+          alSoudahPark: {
+            name: "Al Soudah Park",
+            description: "Cable car rides and mountain views",
+            features: {
+              cableCar: "Cable Car",
+              restaurant: "Restaurant",
+              parking: "Parking",
+              kidsArea: "Kids Area"
+            }
+          },
+          rijalAlmaaVillage: {
+            name: "Rijal Almaa Heritage Village",
+            description: "Traditional stone architecture",
+            features: {
+              museum: "Museum",
+              traditionalCrafts: "Traditional Crafts",
+              photography: "Photography",
+              guidedTours: "Guided Tours"
+            }
+          },
+          habalaVillage: {
+            name: "Habala Hanging Village",
+            description: "Suspended village adventure",
+            features: {
+              cableCar: "Cable Car",
+              hiking: "Hiking",
+              adventure: "Adventure",
+              photography: "Photography"
+            }
+          },
+          jabalMareer: {
+            name: "Jabal Mareer",
+            description: "Highest peak in Asir region",
+            features: {
+              hiking: "Hiking",
+              summitViews: "Summit Views",
+              camping: "Camping",
+              starGazing: "Star Gazing"
+            }
+          },
+          asiriRestaurant: {
+            name: "Traditional Asiri Restaurant",
+            description: "Authentic local cuisine",
+            features: {
+              localCuisine: "Local Cuisine",
+              traditionalSeating: "Traditional Seating",
+              liveMusic: "Live Music",
+              takeaway: "Takeaway"
+            }
+          }
         }
       },
       // Smart Camera
@@ -352,6 +404,58 @@ const resources = {
           heritage: "تراث",
           nature: "طبيعة",
           dining: "مطاعم"
+        },
+        landmarks: {
+          alSoudahPark: {
+            name: "منتزه السودة",
+            description: "رحلات التلفريك ومناظر جبلية خلابة",
+            features: {
+              cableCar: "التلفريك",
+              restaurant: "مطعم",
+              parking: "موقف سيارات",
+              kidsArea: "منطقة الأطفال"
+            }
+          },
+          rijalAlmaaVillage: {
+            name: "قرية رجال ألمع التراثية",
+            description: "العمارة الحجرية التقليدية",
+            features: {
+              museum: "متحف",
+              traditionalCrafts: "الحرف التقليدية",
+              photography: "التصوير",
+              guidedTours: "جولات مرشدة"
+            }
+          },
+          habalaVillage: {
+            name: "قرية هابالا المعلقة",
+            description: "مغامرة القرية المعلقة",
+            features: {
+              cableCar: "التلفريك",
+              hiking: "المشي لمسافات طويلة",
+              adventure: "مغامرة",
+              photography: "التصوير"
+            }
+          },
+          jabalMareer: {
+            name: "جبل مارير",
+            description: "أعلى قمة في منطقة عسير",
+            features: {
+              hiking: "المشي لمسافات طويلة",
+              summitViews: "مناظر القمة",
+              camping: "التخييم",
+              starGazing: "مراقبة النجوم"
+            }
+          },
+          asiriRestaurant: {
+            name: "مطعم عسيري تقليدي",
+            description: "المأكولات المحلية الأصيلة",
+            features: {
+              localCuisine: "المأكولات المحلية",
+              traditionalSeating: "الجلوس التقليدي",
+              liveMusic: "موسيقى حية",
+              takeaway: "وجبات للخارج"
+            }
+          }
         }
       },
       // Smart Camera

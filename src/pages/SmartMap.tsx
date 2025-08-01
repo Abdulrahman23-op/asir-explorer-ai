@@ -33,65 +33,62 @@ const SmartMap = () => {
   const landmarks = [
     {
       id: 1,
-      name: "Al Soudah Park",
+      nameKey: "alSoudahPark",
       type: "mountains",
       distance: "2.5 km",
       time: "5 min drive",
-      description: "Cable car rides and mountain views",
       difficulty: "Easy",
       coordinates: "18.2688° N, 42.3647° E",
-      features: ["Cable Car", "Restaurant", "Parking", "Kids Area"]
+      featureKeys: ["cableCar", "restaurant", "parking", "kidsArea"]
     },
     {
       id: 2,
-      name: "Rijal Almaa Heritage Village",
+      nameKey: "rijalAlmaaVillage",
       type: "heritage",
       distance: "15.2 km",
       time: "25 min drive",
-      description: "Traditional stone architecture",
       difficulty: "Moderate",
       coordinates: "18.1951° N, 42.2394° E",
-      features: ["Museum", "Traditional Crafts", "Photography", "Guided Tours"]
+      featureKeys: ["museum", "traditionalCrafts", "photography", "guidedTours"]
     },
     {
       id: 3,
-      name: "Habala Hanging Village",
+      nameKey: "habalaVillage",
       type: "nature",
       distance: "45.8 km",
       time: "1h 15min drive",
-      description: "Suspended village adventure",
       difficulty: "Challenging",
       coordinates: "18.0769° N, 42.4512° E",
-      features: ["Cable Car", "Hiking", "Adventure", "Photography"]
+      featureKeys: ["cableCar", "hiking", "adventure", "photography"]
     },
     {
       id: 4,
-      name: "Jabal Mareer",
+      nameKey: "jabalMareer",
       type: "mountains",
       distance: "8.3 km",
       time: "15 min drive",
-      description: "Highest peak in Asir region",
       difficulty: "Challenging",
       coordinates: "18.2123° N, 42.4234° E",
-      features: ["Hiking", "Summit Views", "Camping", "Star Gazing"]
+      featureKeys: ["hiking", "summitViews", "camping", "starGazing"]
     },
     {
       id: 5,
-      name: "Traditional Asiri Restaurant",
+      nameKey: "asiriRestaurant",
       type: "dining",
       distance: "1.2 km",
       time: "3 min walk",
-      description: "Authentic local cuisine",
       difficulty: "Easy",
       coordinates: "18.2456° N, 42.3567° E",
-      features: ["Local Cuisine", "Traditional Seating", "Live Music", "Takeaway"]
+      featureKeys: ["localCuisine", "traditionalSeating", "liveMusic", "takeaway"]
     }
   ];
 
   const filteredLandmarks = landmarks.filter(landmark => {
     const matchesFilter = selectedFilter === "all" || landmark.type === selectedFilter;
-    const matchesSearch = landmark.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         landmark.description.toLowerCase().includes(searchQuery.toLowerCase());
+    const landmarkName = t(`map.landmarks.${landmark.nameKey}.name`);
+    const landmarkDescription = t(`map.landmarks.${landmark.nameKey}.description`);
+    const matchesSearch = landmarkName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                         landmarkDescription.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesFilter && matchesSearch;
   });
 
@@ -180,12 +177,12 @@ const SmartMap = () => {
               <CardHeader>
                 <div className="flex items-start justify-between">
                   <div className="flex-1">
-                    <CardTitle className="text-lg mb-2">{landmark.name}</CardTitle>
-                    <p className="text-muted-foreground text-sm mb-3">{landmark.description}</p>
+                    <CardTitle className="text-lg mb-2">{t(`map.landmarks.${landmark.nameKey}.name`)}</CardTitle>
+                    <p className="text-muted-foreground text-sm mb-3">{t(`map.landmarks.${landmark.nameKey}.description`)}</p>
                     <div className="flex flex-wrap gap-2 mb-3">
-                      {landmark.features.map((feature) => (
-                        <Badge key={feature} variant="outline" className="text-xs">
-                          {feature}
+                      {landmark.featureKeys.map((featureKey) => (
+                        <Badge key={featureKey} variant="outline" className="text-xs">
+                          {t(`map.landmarks.${landmark.nameKey}.features.${featureKey}`)}
                         </Badge>
                       ))}
                     </div>
