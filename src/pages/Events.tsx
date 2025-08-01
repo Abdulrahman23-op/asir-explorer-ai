@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
+import { useTranslation } from "react-i18next";
 import { 
   Calendar,
   Clock,
@@ -23,102 +24,90 @@ const Events = () => {
   const [selectedFilter, setSelectedFilter] = useState<string>("all");
   const [registeredEvents, setRegisteredEvents] = useState<string[]>(getRegisteredEvents());
   const { toast } = useToast();
+  const { t } = useTranslation();
 
   const filters = [
-    { id: "all", label: "All Events", icon: Calendar },
-    { id: "festival", label: "Festivals", icon: Star },
-    { id: "cultural", label: "Cultural", icon: Users },
-    { id: "adventure", label: "Adventure", icon: Mountain },
-    { id: "food", label: "Food & Dining", icon: Utensils },
+    { id: "all", label: t("events.categories.all"), icon: Calendar },
+    { id: "festival", label: t("events.categories.festival"), icon: Star },
+    { id: "cultural", label: t("events.categories.cultural"), icon: Users },
+    { id: "adventure", label: t("events.categories.adventure"), icon: Mountain },
+    { id: "food", label: t("events.categories.food"), icon: Utensils },
   ];
 
   const events: Event[] = [
     {
       id: '1',
-      title: 'Asir Summer Festival',
-      description: 'Annual celebration featuring traditional music, dance, and local crafts from the Asir region.',
+      titleKey: 'asirSummerFestival',
       date: '2024-08-15',
       time: '18:00',
-      location: 'Abha Cultural Center',
       category: 'festival',
       image: '/placeholder.svg'
     },
     {
       id: '2',
-      title: 'Traditional Cooking Workshop',
-      description: 'Learn to prepare authentic Asir cuisine with local chefs and traditional cooking methods.',
+      titleKey: 'cookingWorkshop',
       date: '2024-08-20',
       time: '10:00',
-      location: 'Heritage Village Kitchen',
       category: 'food',
       image: '/placeholder.svg'
     },
     {
       id: '3',
-      title: 'Mountain Photography Exhibition',
-      description: 'Showcase of stunning landscape photography capturing the beauty of Asir mountains.',
+      titleKey: 'photographyExhibition',
       date: '2024-08-25',
       time: '16:00',
-      location: 'Asir Art Gallery',
       category: 'cultural',
       image: '/placeholder.svg'
     },
     {
       id: '4',
-      title: 'Hiking Challenge',
-      description: 'Guided group hike to the highest peaks in Asir National Park. All skill levels welcome.',
+      titleKey: 'hikingChallenge',
       date: '2024-08-30',
       time: '06:00',
-      location: 'Asir National Park Entrance',
       category: 'adventure',
       image: '/placeholder.svg'
     },
     {
       id: '5',
-      title: 'Coffee Culture Experience',
-      description: 'Discover the rich coffee culture of Saudi Arabia with traditional preparation and tasting.',
+      titleKey: 'coffeeExperience',
       date: '2024-09-05',
       time: '14:00',
-      location: 'Traditional Coffee House',
       category: 'cultural',
       image: '/placeholder.svg'
     },
     {
       id: '6',
-      title: 'Folk Music Concert',
-      description: 'Evening of traditional Asir folk music performed by local artists under the stars.',
+      titleKey: 'folkMusicConcert',
       date: '2024-09-10',
       time: '20:00',
-      location: 'Outdoor Amphitheater',
       category: 'festival',
       image: '/placeholder.svg'
     },
     {
       id: '7',
-      title: 'Desert Stargazing Night',
-      description: 'Professional astronomy session with telescopes and expert guides in the clear desert sky.',
+      titleKey: 'stargazingNight',
       date: '2024-09-15',
       time: '21:00',
-      location: 'Desert Observatory',
       category: 'adventure',
       image: '/placeholder.svg'
     },
     {
       id: '8',
-      title: 'Local Handicrafts Fair',
-      description: 'Browse and purchase authentic handmade crafts from local artisans and craftspeople.',
+      titleKey: 'handicraftsFair',
       date: '2024-09-20',
       time: '09:00',
-      location: 'Main Market Square',
       category: 'cultural',
       image: '/placeholder.svg'
     }
   ];
 
   const filteredEvents = events.filter(event => {
-    const matchesSearch = event.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         event.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         event.location.toLowerCase().includes(searchQuery.toLowerCase());
+    const eventTitle = t(`events.eventsList.${event.titleKey}.title`);
+    const eventDescription = t(`events.eventsList.${event.titleKey}.description`);
+    const eventLocation = t(`events.eventsList.${event.titleKey}.location`);
+    const matchesSearch = eventTitle.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                         eventDescription.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                         eventLocation.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesFilter = selectedFilter === "all" || event.category === selectedFilter;
     return matchesSearch && matchesFilter;
   });
@@ -131,15 +120,15 @@ const Events = () => {
       unregisterFromEvent(eventId);
       setRegisteredEvents(getRegisteredEvents());
       toast({
-        title: "Registration cancelled",
-        description: `You have unregistered from ${event.title}.`
+        title: t("events.registrationCancelled"),
+        description: `${t("events.unregisteredMessage")} ${t(`events.eventsList.${event.titleKey}.title`)}.`
       });
     } else {
       registerForEvent(eventId);
       setRegisteredEvents(getRegisteredEvents());
       toast({
-        title: "Successfully registered!",
-        description: `You are now registered for ${event.title}.`
+        title: t("events.successfullyRegistered"),
+        description: `${t("events.registeredMessage")} ${t(`events.eventsList.${event.titleKey}.title`)}.`
       });
     }
   };
@@ -183,10 +172,10 @@ const Events = () => {
     <div className="container mx-auto px-4 py-8 max-w-6xl">
       <div className="text-center mb-8">
         <h1 className="text-4xl font-bold bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent mb-4">
-          Events & Experiences
+          {t("events.title")}
         </h1>
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-          Discover exciting events, festivals, and cultural experiences happening in the Asir region. Join us in celebrating the rich heritage and natural beauty of Saudi Arabia.
+          {t("events.subtitle")}
         </p>
       </div>
 
@@ -196,7 +185,7 @@ const Events = () => {
           <div className="relative flex-1">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
             <Input
-              placeholder="Search events, locations, or descriptions..."
+              placeholder={t("events.searchPlaceholder")}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="pl-10"
@@ -233,13 +222,13 @@ const Events = () => {
         <Card>
           <CardContent className="p-4 text-center">
             <div className="text-2xl font-bold text-primary">{events.length}</div>
-            <div className="text-sm text-muted-foreground">Total Events</div>
+            <div className="text-sm text-muted-foreground">{t("events.totalEvents")}</div>
           </CardContent>
         </Card>
         <Card>
           <CardContent className="p-4 text-center">
             <div className="text-2xl font-bold text-primary">{registeredEvents.length}</div>
-            <div className="text-sm text-muted-foreground">Registered</div>
+            <div className="text-sm text-muted-foreground">{t("events.registered")}</div>
           </CardContent>
         </Card>
         <Card>
@@ -247,7 +236,7 @@ const Events = () => {
             <div className="text-2xl font-bold text-primary">
               {events.filter(e => !isEventPast(e.date, e.time)).length}
             </div>
-            <div className="text-sm text-muted-foreground">Upcoming</div>
+            <div className="text-sm text-muted-foreground">{t("events.upcoming_stats")}</div>
           </CardContent>
         </Card>
       </div>
@@ -257,9 +246,9 @@ const Events = () => {
         <Card className="h-64 flex items-center justify-center">
           <div className="text-center">
             <Calendar className="h-16 w-16 text-muted-foreground mx-auto mb-4" />
-            <h3 className="text-lg font-semibold mb-2">No events found</h3>
+            <h3 className="text-lg font-semibold mb-2">{t("events.noEventsFound")}</h3>
             <p className="text-muted-foreground">
-              Try adjusting your search or filter criteria
+              {t("events.adjustSearch")}
             </p>
           </div>
         </Card>
@@ -282,16 +271,16 @@ const Events = () => {
                       className="flex items-center gap-1"
                     >
                       <CategoryIcon className="h-3 w-3" />
-                      {event.category}
+                      {t(`events.categories.${event.category}`)}
                     </Badge>
                     {isPast && (
                       <Badge variant="outline" className="text-xs">
-                        Past Event
+                        {t("events.pastEvent")}
                       </Badge>
                     )}
                   </div>
-                  <CardTitle className="text-lg leading-tight">{event.title}</CardTitle>
-                  <p className="text-sm text-muted-foreground">{event.description}</p>
+                  <CardTitle className="text-lg leading-tight">{t(`events.eventsList.${event.titleKey}.title`)}</CardTitle>
+                  <p className="text-sm text-muted-foreground">{t(`events.eventsList.${event.titleKey}.description`)}</p>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-2 mb-4">
@@ -305,7 +294,7 @@ const Events = () => {
                     </div>
                     <div className="flex items-center gap-2 text-sm">
                       <MapPin className="h-4 w-4 text-muted-foreground" />
-                      <span>{event.location}</span>
+                      <span>{t(`events.eventsList.${event.titleKey}.location`)}</span>
                     </div>
                   </div>
 
@@ -317,7 +306,7 @@ const Events = () => {
                       size="sm"
                       className="flex-1"
                     >
-                      {isPast ? 'Event Ended' : isRegistered ? 'Unregister' : 'Register'}
+                      {isPast ? t("events.eventEnded") : isRegistered ? t("events.unregister") : t("events.register")}
                     </Button>
                     <Button variant="outline" size="sm">
                       <MapPin className="h-4 w-4" />

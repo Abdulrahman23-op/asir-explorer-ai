@@ -32,11 +32,12 @@ export interface BookingData {
 
 export interface Event {
   id: string;
-  title: string;
-  description: string;
+  title?: string;
+  titleKey?: string;
+  description?: string;
   date: string;
   time: string;
-  location: string;
+  location?: string;
   category: 'festival' | 'cultural' | 'adventure' | 'food';
   image?: string;
   isRegistered?: boolean;

@@ -280,8 +280,8 @@ const resources = {
       },
       // Events
       events: {
-        title: "Local Events",
-        subtitle: "Discover cultural events and festivals in the Asir region",
+        title: "Events & Experiences",
+        subtitle: "Discover exciting events, festivals, and cultural experiences happening in the Asir region. Join us in celebrating the rich heritage and natural beauty of Saudi Arabia.",
         upcoming: "Upcoming Events",
         past: "Past Events",
         createEvent: "Create Event",
@@ -291,16 +291,69 @@ const resources = {
         eventTime: "Event Time",
         eventLocation: "Event Location",
         eventCategory: "Event Category",
+        searchPlaceholder: "Search events, locations, or descriptions...",
+        noEventsFound: "No events found",
+        adjustSearch: "Try adjusting your search or filter criteria",
+        totalEvents: "Total Events",
+        registered: "Registered",
+        upcoming_stats: "Upcoming",
+        eventEnded: "Event Ended",
+        register: "Register",
+        unregister: "Unregister",
+        pastEvent: "Past Event",
+        registrationCancelled: "Registration cancelled",
+        unregisteredMessage: "You have unregistered from",
+        successfullyRegistered: "Successfully registered!",
+        registeredMessage: "You are now registered for",
         categories: {
+          all: "All Events",
+          festival: "Festivals",
           cultural: "Cultural",
-          festival: "Festival",
           adventure: "Adventure",
-          food: "Food & Dining",
-          workshop: "Workshop",
-          music: "Music"
+          food: "Food & Dining"
         },
-        interested: "Interested",
-        attending: "Attending"
+        eventsList: {
+          asirSummerFestival: {
+            title: "Asir Summer Festival",
+            description: "Annual celebration featuring traditional music, dance, and local crafts from the Asir region.",
+            location: "Abha Cultural Center"
+          },
+          cookingWorkshop: {
+            title: "Traditional Cooking Workshop",
+            description: "Learn to prepare authentic Asir cuisine with local chefs and traditional cooking methods.",
+            location: "Heritage Village Kitchen"
+          },
+          photographyExhibition: {
+            title: "Mountain Photography Exhibition",
+            description: "Showcase of stunning landscape photography capturing the beauty of Asir mountains.",
+            location: "Asir Art Gallery"
+          },
+          hikingChallenge: {
+            title: "Hiking Challenge",
+            description: "Guided group hike to the highest peaks in Asir National Park. All skill levels welcome.",
+            location: "Asir National Park Entrance"
+          },
+          coffeeExperience: {
+            title: "Coffee Culture Experience",
+            description: "Discover the rich coffee culture of Saudi Arabia with traditional preparation and tasting.",
+            location: "Traditional Coffee House"
+          },
+          folkMusicConcert: {
+            title: "Folk Music Concert",
+            description: "Evening of traditional Asir folk music performed by local artists under the stars.",
+            location: "Outdoor Amphitheater"
+          },
+          stargazingNight: {
+            title: "Desert Stargazing Night",
+            description: "Professional astronomy session with telescopes and expert guides in the clear desert sky.",
+            location: "Desert Observatory"
+          },
+          handicraftsFair: {
+            title: "Local Handicrafts Fair",
+            description: "Browse and purchase authentic handmade crafts from local artisans and craftspeople.",
+            location: "Main Market Square"
+          }
+        }
       }
     }
   },
@@ -581,8 +634,8 @@ const resources = {
       },
       // Events
       events: {
-        title: "الفعاليات المحلية",
-        subtitle: "اكتشف الفعاليات الثقافية والمهرجانات في منطقة عسير",
+        title: "الفعاليات والتجارب",
+        subtitle: "اكتشف الفعاليات المثيرة والمهرجانات والتجارب الثقافية التي تحدث في منطقة عسير. انضم إلينا في الاحتفال بالتراث الغني والجمال الطبيعي للمملكة العربية السعودية.",
         upcoming: "الفعاليات القادمة",
         past: "الفعاليات السابقة",
         createEvent: "إنشاء فعالية",
@@ -592,16 +645,69 @@ const resources = {
         eventTime: "وقت الفعالية",
         eventLocation: "موقع الفعالية",
         eventCategory: "فئة الفعالية",
+        searchPlaceholder: "البحث في الفعاليات أو المواقع أو الأوصاف...",
+        noEventsFound: "لم يتم العثور على فعاليات",
+        adjustSearch: "جرب تعديل معايير البحث أو التصفية",
+        totalEvents: "إجمالي الفعاليات",
+        registered: "مسجل",
+        upcoming_stats: "قادم",
+        eventEnded: "انتهت الفعالية",
+        register: "تسجيل",
+        unregister: "إلغاء التسجيل",
+        pastEvent: "فعالية سابقة",
+        registrationCancelled: "تم إلغاء التسجيل",
+        unregisteredMessage: "تم إلغاء تسجيلك من",
+        successfullyRegistered: "تم التسجيل بنجاح!",
+        registeredMessage: "أنت الآن مسجل في",
         categories: {
+          all: "جميع الفعاليات",
+          festival: "المهرجانات",
           cultural: "ثقافي",
-          festival: "مهرجان",
           adventure: "مغامرة",
-          food: "طعام ومأكولات",
-          workshop: "ورشة عمل",
-          music: "موسيقى"
+          food: "الطعام والمأكولات"
         },
-        interested: "مهتم",
-        attending: "سأحضر"
+        eventsList: {
+          asirSummerFestival: {
+            title: "مهرجان عسير الصيفي",
+            description: "احتفال سنوي يضم الموسيقى التقليدية والرقص والحرف المحلية من منطقة عسير.",
+            location: "مركز أبها الثقافي"
+          },
+          cookingWorkshop: {
+            title: "ورشة الطبخ التقليدي",
+            description: "تعلم تحضير المأكولات العسيرية الأصيلة مع الطهاة المحليين وطرق الطبخ التقليدية.",
+            location: "مطبخ القرية التراثية"
+          },
+          photographyExhibition: {
+            title: "معرض تصوير الجبال",
+            description: "عرض للصور الطبيعية المذهلة التي تلتقط جمال جبال عسير.",
+            location: "معرض عسير للفنون"
+          },
+          hikingChallenge: {
+            title: "تحدي المشي لمسافات طويلة",
+            description: "رحلة مشي جماعية مرشدة إلى أعلى القمم في حديقة عسير الوطنية. مرحب بجميع المستويات.",
+            location: "مدخل حديقة عسير الوطنية"
+          },
+          coffeeExperience: {
+            title: "تجربة ثقافة القهوة",
+            description: "اكتشف ثقافة القهوة الغنية في المملكة العربية السعودية مع التحضير التقليدي والتذوق.",
+            location: "بيت القهوة التقليدي"
+          },
+          folkMusicConcert: {
+            title: "حفل الموسيقى الشعبية",
+            description: "أمسية من الموسيقى الشعبية العسيرية التقليدية يؤديها فنانون محليون تحت النجوم.",
+            location: "المسرح المفتوح"
+          },
+          stargazingNight: {
+            title: "ليلة مراقبة النجوم الصحراوية",
+            description: "جلسة فلكية مهنية مع التلسكوبات والمرشدين الخبراء في سماء الصحراء الصافية.",
+            location: "مرصد الصحراء"
+          },
+          handicraftsFair: {
+            title: "معرض الحرف اليدوية المحلية",
+            description: "تصفح واشتر الحرف اليدوية الأصيلة من الحرفيين والحرفيات المحليين.",
+            location: "ساحة السوق الرئيسية"
+          }
+        }
       }
     }
   }
