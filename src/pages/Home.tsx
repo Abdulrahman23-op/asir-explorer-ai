@@ -92,16 +92,20 @@ const Home = () => {
       {/* Hero Section */}
       <section className="relative py-20 px-4 cultural-border-pattern">
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-10 left-10 w-20 h-20 opacity-10" style={{
-            background: `conic-gradient(from 0deg at 50% 50%, hsl(var(--cultural-orange)), hsl(var(--cultural-green)), hsl(var(--cultural-orange)))`
-          }}></div>
+          <div className="absolute top-10 left-10 w-20 h-20 opacity-20">
+            <img 
+              src="/lovable-uploads/fa510cc7-6bd1-4f1b-9ab8-a8eb31518f79.png" 
+              alt="Mazar Logo Decoration" 
+              className="w-full h-full object-contain"
+            />
+          </div>
           <div className="absolute bottom-10 right-10 w-16 h-16 opacity-10" style={{
             background: `radial-gradient(circle, hsl(var(--cultural-green)), transparent 70%)`
           }}></div>
         </div>
         <div className="container mx-auto text-center space-y-6 relative">
           <div className="space-y-4">
-            <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+            <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent leading-relaxed">
               {t("home.welcome")}
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">

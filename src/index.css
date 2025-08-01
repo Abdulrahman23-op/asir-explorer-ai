@@ -164,6 +164,27 @@ All colors MUST be HSL.
     margin-right: auto;
     margin-left: 0;
   }
+
+  /* Better Arabic text display */
+  [dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3 {
+    font-family: 'Segoe UI', 'Arial', sans-serif;
+    letter-spacing: 0;
+    line-height: 1.4;
+  }
+
+  /* Improve Arabic text rendering */
+  [lang="ar"] {
+    font-feature-settings: "liga" 1, "calt" 1;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Better spacing for Arabic titles */
+  [lang="ar"] .text-4xl, [lang="ar"] .text-6xl {
+    word-spacing: 0.1em;
+    line-height: 1.3;
+  }
 }
 
 @layer components {

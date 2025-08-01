@@ -171,7 +171,7 @@ const Events = () => {
   return (
     <div className="container mx-auto px-4 py-8 max-w-6xl">
       <div className="text-center mb-8">
-        <h1 className="text-4xl font-bold bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent mb-4">
+        <h1 className="text-4xl font-bold bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent mb-4 leading-relaxed">
           {t("events.title")}
         </h1>
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
