@@ -90,8 +90,16 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-background to-muted/30">
       {/* Hero Section */}
-      <section className="relative py-20 px-4">
-        <div className="container mx-auto text-center space-y-6">
+      <section className="relative py-20 px-4 cultural-border-pattern">
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-10 left-10 w-20 h-20 opacity-10" style={{
+            background: `conic-gradient(from 0deg at 50% 50%, hsl(var(--cultural-orange)), hsl(var(--cultural-green)), hsl(var(--cultural-orange)))`
+          }}></div>
+          <div className="absolute bottom-10 right-10 w-16 h-16 opacity-10" style={{
+            background: `radial-gradient(circle, hsl(var(--cultural-green)), transparent 70%)`
+          }}></div>
+        </div>
+        <div className="container mx-auto text-center space-y-6 relative">
           <div className="space-y-4">
             <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
               {t("home.welcome")}
@@ -120,11 +128,16 @@ const Home = () => {
 
       <div className="container mx-auto px-4 py-8 space-y-12">
         {/* Quick Actions */}
-        <section className="space-y-6">
-          <h2 className="text-3xl font-bold text-center">{t("home.quickActions")}</h2>
+        <section className="space-y-6 geometric-decoration">
+          <div className="relative">
+            <h2 className="text-3xl font-bold text-center">{t("home.quickActions")}</h2>
+            <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 w-16 h-1 rounded" style={{
+              background: `linear-gradient(to right, hsl(var(--cultural-orange)), hsl(var(--cultural-green)))`
+            }}></div>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
             {quickActions.map((action, index) => (
-              <Card key={index} className="hover:shadow-lg transition-all duration-300 group cursor-pointer">
+              <Card key={index} className="hover:shadow-lg transition-all duration-300 group cursor-pointer traditional-corner">
                 <Link to={action.href}>
                   <CardContent className="p-6 text-center space-y-4">
                     <div className={`w-12 h-12 rounded-full ${action.color} flex items-center justify-center mx-auto group-hover:scale-110 transition-transform`}>
@@ -142,9 +155,14 @@ const Home = () => {
         </section>
 
         {/* Featured Destinations */}
-        <section className="space-y-6">
-          <div className="flex items-center justify-between">
-            <h2 className="text-3xl font-bold">{t("home.featuredDestinations")}</h2>
+        <section className="space-y-6 cultural-border-pattern">
+          <div className="flex items-center justify-between relative">
+            <div className="relative">
+              <h2 className="text-3xl font-bold">{t("home.featuredDestinations")}</h2>
+              <div className="absolute -bottom-2 left-0 w-20 h-1 rounded" style={{
+                background: `linear-gradient(to right, hsl(var(--cultural-green)), hsl(var(--cultural-orange)))`
+              }}></div>
+            </div>
             <Button variant="outline" className="gap-2" asChild>
               <Link to="/map">
                 {t("home.viewAll")}
@@ -154,10 +172,13 @@ const Home = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {featuredDestinations.map((destination) => (
-              <Card key={destination.id} className="overflow-hidden hover:shadow-lg transition-shadow">
-                <div className="aspect-video bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center text-6xl">
+            {featuredDestinations.map((destination, index) => (
+              <Card key={destination.id} className="overflow-hidden hover:shadow-lg transition-shadow geometric-decoration">
+                <div className="aspect-video bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center text-6xl relative">
                   {destination.image}
+                  <div className="absolute top-2 left-2 w-6 h-6 opacity-30" style={{
+                    background: `conic-gradient(from ${index * 45}deg at 50% 50%, hsl(var(--cultural-orange)), transparent, hsl(var(--cultural-green)))`
+                  }}></div>
                 </div>
                 <CardContent className="p-6">
                   <div className="space-y-3">
@@ -193,12 +214,15 @@ const Home = () => {
         {/* Safety Status & Events */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Safety Status */}
-          <Card className="border-green-200 bg-green-50 dark:bg-green-950 dark:border-green-800">
-            <CardHeader>
+          <Card className="border-green-200 bg-green-50 dark:bg-green-950 dark:border-green-800 traditional-corner">
+            <CardHeader className="relative">
               <CardTitle className="flex items-center gap-2 text-green-800 dark:text-green-200">
                 <Shield className="h-5 w-5" />
                 {t("home.safetyStatus")}
               </CardTitle>
+              <div className="absolute top-2 right-2 w-3 h-3 rounded-full opacity-50" style={{
+                background: `hsl(var(--cultural-green))`
+              }}></div>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="space-y-2">
@@ -222,16 +246,22 @@ const Home = () => {
           </Card>
 
           {/* Upcoming Events */}
-          <Card>
-            <CardHeader>
+          <Card className="geometric-decoration">
+            <CardHeader className="relative">
               <CardTitle className="flex items-center gap-2">
                 <Calendar className="h-5 w-5" />
                 {t("home.upcomingEvents")}
               </CardTitle>
+              <div className="absolute top-2 right-2 w-3 h-3 rounded-full opacity-50" style={{
+                background: `hsl(var(--cultural-orange))`
+              }}></div>
             </CardHeader>
             <CardContent className="space-y-4">
-              <div className="flex items-center justify-between p-3 rounded-lg bg-muted/50">
-                <div>
+              <div className="flex items-center justify-between p-3 rounded-lg bg-muted/50 relative">
+                <div className="absolute left-0 top-0 w-1 h-full rounded-l" style={{
+                  background: `linear-gradient(to bottom, hsl(var(--cultural-orange)), hsl(var(--cultural-green)))`
+                }}></div>
+                <div className="ml-3">
                   <h4 className="font-medium">{t("home.asirFestival")}</h4>
                   <p className="text-sm text-muted-foreground">{t("home.abhaCenter")}</p>
                 </div>

@@ -49,10 +49,15 @@ All colors MUST be HSL.
     --tourism-nature: 120 40% 35%;
     --tourism-sky: 200 50% 85%;
     
+    /* Cultural decoration colors */
+    --cultural-orange: 25 77% 51%; /* #e17a22 converted to HSL */
+    --cultural-green: 93 32% 35%;  /* #5a7840 converted to HSL */
+    
     /* Gradients for hero sections */
     --gradient-mountain: linear-gradient(135deg, hsl(160 40% 25%), hsl(140 30% 30%));
     --gradient-heritage: linear-gradient(135deg, hsl(45 85% 55%), hsl(35 80% 60%));
     --gradient-nature: linear-gradient(180deg, hsl(120 40% 35%), hsl(140 30% 40%));
+    --gradient-cultural: linear-gradient(135deg, hsl(var(--cultural-orange)), hsl(var(--cultural-green)));
 
     --sidebar-background: 0 0% 98%;
 
@@ -108,10 +113,15 @@ All colors MUST be HSL.
     --tourism-nature: 120 40% 55%;
     --tourism-sky: 200 30% 25%;
     
+    /* Cultural decoration colors - darker for dark mode */
+    --cultural-orange: 25 77% 65%;
+    --cultural-green: 93 32% 55%;
+    
     /* Dark gradients */
     --gradient-mountain: linear-gradient(135deg, hsl(15 15% 8%), hsl(140 30% 15%));
     --gradient-heritage: linear-gradient(135deg, hsl(45 85% 25%), hsl(35 80% 20%));
     --gradient-nature: linear-gradient(180deg, hsl(120 40% 15%), hsl(140 30% 20%));
+    --gradient-cultural: linear-gradient(135deg, hsl(var(--cultural-orange)), hsl(var(--cultural-green)));
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -153,5 +163,52 @@ All colors MUST be HSL.
   [dir="rtl"] .mr-auto {
     margin-right: auto;
     margin-left: 0;
+  }
+}
+
+@layer components {
+  /* Cultural Decorative Elements */
+  .cultural-border-pattern {
+    @apply relative;
+  }
+  
+  .cultural-border-pattern::before {
+    content: '';
+    @apply absolute top-0 left-0 right-0 h-1 bg-gradient-to-r;
+    background: repeating-linear-gradient(
+      to right,
+      hsl(var(--cultural-orange)) 0,
+      hsl(var(--cultural-orange)) 10px,
+      hsl(var(--cultural-green)) 10px,
+      hsl(var(--cultural-green)) 20px
+    );
+  }
+  
+  .geometric-decoration {
+    @apply relative;
+  }
+  
+  .geometric-decoration::after {
+    content: '';
+    @apply absolute top-2 right-2 w-8 h-8 opacity-20;
+    background: 
+      linear-gradient(45deg, transparent 30%, hsl(var(--cultural-orange)) 30%, hsl(var(--cultural-orange)) 70%, transparent 70%),
+      linear-gradient(-45deg, transparent 30%, hsl(var(--cultural-green)) 30%, hsl(var(--cultural-green)) 70%, transparent 70%);
+  }
+  
+  .traditional-corner {
+    @apply relative;
+  }
+  
+  .traditional-corner::before {
+    content: '';
+    @apply absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 opacity-60;
+    border-color: hsl(var(--cultural-orange));
+  }
+  
+  .traditional-corner::after {
+    content: '';
+    @apply absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 opacity-60;
+    border-color: hsl(var(--cultural-green));
   }
 }
