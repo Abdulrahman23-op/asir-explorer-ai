@@ -130,6 +130,53 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Featured Images Section */}
+      <section className="container mx-auto px-4 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* Image 1 */}
+          <div className="relative group">
+            <div className="absolute -inset-4 rounded-lg opacity-75 group-hover:opacity-100 transition-opacity duration-300" style={{
+              background: `linear-gradient(135deg, hsl(var(--cultural-orange)), hsl(var(--cultural-green)))`
+            }}></div>
+            <div className="relative overflow-hidden rounded-lg shadow-lg">
+              <img 
+                src="/lovable-uploads/63108b5e-e2f2-449d-b937-3f4d74076b91.png" 
+                alt="Traditional Asir Architecture - Stone Village" 
+                className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+            </div>
+          </div>
+
+          {/* Image 2 */}
+          <div className="relative group">
+            <div className="absolute -inset-4 rounded-lg opacity-75 group-hover:opacity-100 transition-opacity duration-300" style={{
+              background: `linear-gradient(135deg, hsl(var(--cultural-green)), hsl(var(--primary)))`
+            }}></div>
+            <div className="relative overflow-hidden rounded-lg shadow-lg">
+              <img 
+                src="/lovable-uploads/9b260ada-36ea-43a9-ae7b-eb04b4082073.png" 
+                alt="Traditional Asir Architecture - Illuminated Village" 
+                className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+            </div>
+          </div>
+
+          {/* Image 3 */}
+          <div className="relative group">
+            <div className="absolute -inset-4 rounded-lg opacity-75 group-hover:opacity-100 transition-opacity duration-300" style={{
+              background: `linear-gradient(135deg, hsl(var(--primary)), hsl(var(--cultural-orange)))`
+            }}></div>
+            <div className="relative overflow-hidden rounded-lg shadow-lg">
+              <img 
+                src="/lovable-uploads/1c4d9cb7-4891-4f51-844c-00cc0c7aca0d.png" 
+                alt="Traditional Asir Architecture - Historic Village" 
+                className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
       <div className="container mx-auto px-4 py-8 space-y-12">
         {/* Quick Actions */}
         <section className="space-y-6 geometric-decoration">
