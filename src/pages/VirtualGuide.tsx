@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -19,6 +20,7 @@ import { getFavorites, saveFavorite, removeFavorite, isFavorite } from "@/lib/lo
 import { useToast } from "@/hooks/use-toast";
 
 const VirtualGuide = () => {
+  const { t } = useTranslation();
   const [selectedInterests, setSelectedInterests] = useState<string[]>([]);
   const [duration, setDuration] = useState('');
   const [groupSize, setGroupSize] = useState('');
@@ -28,12 +30,12 @@ const VirtualGuide = () => {
   const { toast } = useToast();
 
   const interests = [
-    { id: 'adventure', label: 'Adventure', icon: Mountain },
-    { id: 'culture', label: 'Cultural Sites', icon: Star },
-    { id: 'nature', label: 'Nature', icon: MapPin },
-    { id: 'photography', label: 'Photography', icon: Camera },
-    { id: 'hiking', label: 'Hiking', icon: Navigation },
-    { id: 'history', label: 'Historical', icon: Clock }
+    { id: 'adventure', label: t('guide.interestTypes.adventure'), icon: Mountain },
+    { id: 'culture', label: t('guide.interestTypes.cultural'), icon: Star },
+    { id: 'nature', label: t('guide.interestTypes.nature'), icon: MapPin },
+    { id: 'photography', label: t('guide.interestTypes.photography'), icon: Camera },
+    { id: 'hiking', label: t('guide.interestTypes.hiking'), icon: Navigation },
+    { id: 'history', label: t('guide.interestTypes.historical'), icon: Clock }
   ];
 
   const sampleRecommendations = [
@@ -138,11 +140,11 @@ const VirtualGuide = () => {
         <div className="flex items-center justify-center gap-2 mb-4">
           <Bot className="h-8 w-8 text-primary" />
           <h1 className="text-4xl font-bold bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-            Virtual Guide
+            {t('guide.title')}
           </h1>
         </div>
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-          Get AI-powered personalized recommendations for your Asir adventure. Tell us your preferences and we'll create the perfect itinerary.
+          {t('guide.subtitle')}
         </p>
       </div>
 
@@ -153,13 +155,13 @@ const VirtualGuide = () => {
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Filter className="h-5 w-5" />
-                Your Preferences
+                {t('guide.preferences')}
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-6">
               {/* Interests */}
               <div>
-                <label className="text-sm font-medium mb-3 block">What interests you?</label>
+                <label className="text-sm font-medium mb-3 block">{t('guide.interests')}</label>
                 <div className="grid grid-cols-2 gap-2">
                   {interests.map((interest) => {
                     const Icon = interest.icon;
@@ -182,9 +184,9 @@ const VirtualGuide = () => {
 
               {/* Duration */}
               <div>
-                <label className="text-sm font-medium mb-2 block">Preferred Duration</label>
+                <label className="text-sm font-medium mb-2 block">{t('guide.duration')}</label>
                 <Input
-                  placeholder="e.g., Half day, Full day, 2 days"
+                  placeholder={t('guide.placeholders.duration')}
                   value={duration}
                   onChange={(e) => setDuration(e.target.value)}
                 />
@@ -192,9 +194,9 @@ const VirtualGuide = () => {
 
               {/* Group Size */}
               <div>
-                <label className="text-sm font-medium mb-2 block">Group Size</label>
+                <label className="text-sm font-medium mb-2 block">{t('guide.groupSize')}</label>
                 <Input
-                  placeholder="e.g., 2 adults, Family of 4"
+                  placeholder={t('guide.placeholders.groupSize')}
                   value={groupSize}
                   onChange={(e) => setGroupSize(e.target.value)}
                 />
@@ -202,9 +204,9 @@ const VirtualGuide = () => {
 
               {/* Special Requests */}
               <div>
-                <label className="text-sm font-medium mb-2 block">Special Requests</label>
+                <label className="text-sm font-medium mb-2 block">{t('guide.specialRequests')}</label>
                 <Textarea
-                  placeholder="Any special requirements, accessibility needs, or preferences..."
+                  placeholder={t('guide.placeholders.specialRequests')}
                   value={specialRequests}
                   onChange={(e) => setSpecialRequests(e.target.value)}
                   rows={3}
@@ -220,12 +222,12 @@ const VirtualGuide = () => {
                 {isGenerating ? (
                   <>
                     <Bot className="mr-2 h-4 w-4 animate-spin" />
-                    Generating...
+                    {t('guide.generating')}
                   </>
                 ) : (
                   <>
                     <Bot className="mr-2 h-4 w-4" />
-                    Get Recommendations
+                    {t('guide.getRecommendations')}
                   </>
                 )}
               </Button>
@@ -239,9 +241,9 @@ const VirtualGuide = () => {
             <Card className="h-96 flex items-center justify-center">
               <div className="text-center">
                 <Bot className="h-16 w-16 text-muted-foreground mx-auto mb-4" />
-                <h3 className="text-lg font-semibold mb-2">Ready to explore Asir?</h3>
+                <h3 className="text-lg font-semibold mb-2">{t('guide.readyToExplore')}</h3>
                 <p className="text-muted-foreground">
-                  Fill out your preferences and get personalized recommendations
+                  {t('guide.fillPreferences')}
                 </p>
               </div>
             </Card>

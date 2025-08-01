@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -23,6 +24,7 @@ import { getBookings, saveBooking, type BookingData } from "@/lib/localStorage";
 import { useToast } from "@/hooks/use-toast";
 
 const Booking = () => {
+  const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState("book");
   const [selectedTour, setSelectedTour] = useState<string>("");
   const [formData, setFormData] = useState({
@@ -41,49 +43,49 @@ const Booking = () => {
     {
       id: '4x4-mountain',
       type: '4x4-tour' as const,
-      title: 'Mountain Safari Adventure',
-      description: 'Explore the rugged mountain terrain of Asir with our expert guides in a comfortable 4x4 vehicle.',
+      title: t('booking.tours.mountainSafari.title'),
+      description: t('booking.tours.mountainSafari.description'),
       duration: '6 hours',
       price: 'SAR 450',
       maxParticipants: 6,
-      highlights: ['Mountain trails', 'Scenic viewpoints', 'Wildlife spotting', 'Traditional lunch'],
-      includes: ['4x4 vehicle', 'Professional driver', 'Lunch', 'Water & snacks'],
+      highlights: t('booking.tours.mountainSafari.highlights', { returnObjects: true }) as string[],
+      includes: t('booking.tours.mountainSafari.includes', { returnObjects: true }) as string[],
       difficulty: 'Moderate'
     },
     {
       id: '4x4-desert',
       type: '4x4-tour' as const,
-      title: 'Desert Exploration',
-      description: 'Experience the vast desert landscapes surrounding Asir with dune bashing and sunset views.',
+      title: t('booking.tours.desertExploration.title'),
+      description: t('booking.tours.desertExploration.description'),
       duration: '5 hours',
       price: 'SAR 380',
       maxParticipants: 6,
-      highlights: ['Dune bashing', 'Sunset photography', 'Desert camp', 'Traditional coffee'],
-      includes: ['4x4 vehicle', 'Professional driver', 'Refreshments', 'Photography stops'],
+      highlights: t('booking.tours.desertExploration.highlights', { returnObjects: true }) as string[],
+      includes: t('booking.tours.desertExploration.includes', { returnObjects: true }) as string[],
       difficulty: 'Easy'
     },
     {
       id: 'hiking-guided',
       type: 'hiking' as const,
-      title: 'Guided Hiking Experience',
-      description: 'Trek through the beautiful trails of Asir National Park with experienced local guides.',
+      title: t('booking.tours.guidedHiking.title'),
+      description: t('booking.tours.guidedHiking.description'),
       duration: '4 hours',
       price: 'SAR 220',
       maxParticipants: 8,
-      highlights: ['Juniper forests', 'Mountain peaks', 'Bird watching', 'Local flora'],
-      includes: ['Professional guide', 'Safety equipment', 'Trail snacks', 'First aid'],
+      highlights: t('booking.tours.guidedHiking.highlights', { returnObjects: true }) as string[],
+      includes: t('booking.tours.guidedHiking.includes', { returnObjects: true }) as string[],
       difficulty: 'Moderate'
     },
     {
       id: 'cultural-village',
       type: 'cultural' as const,
-      title: 'Cultural Village Tour',
-      description: 'Visit traditional villages and experience authentic Asir culture and heritage.',
+      title: t('booking.tours.culturalVillage.title'),
+      description: t('booking.tours.culturalVillage.description'),
       duration: '3 hours',
       price: 'SAR 180',
       maxParticipants: 10,
-      highlights: ['Traditional architecture', 'Local crafts', 'Cultural museum', 'Traditional tea'],
-      includes: ['Transportation', 'Local guide', 'Village entry', 'Cultural activities'],
+      highlights: t('booking.tours.culturalVillage.highlights', { returnObjects: true }) as string[],
+      includes: t('booking.tours.culturalVillage.includes', { returnObjects: true }) as string[],
       difficulty: 'Easy'
     }
   ];
@@ -166,10 +168,10 @@ const Booking = () => {
     <div className="container mx-auto px-4 py-8 max-w-6xl">
       <div className="text-center mb-8">
         <h1 className="text-4xl font-bold bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent mb-4">
-          Book Your Adventure
+          {t('booking.title')}
         </h1>
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-          Choose from our exciting tours and experiences in the beautiful Asir region. Book now and create unforgettable memories.
+          {t('booking.subtitle')}
         </p>
       </div>
 
@@ -177,11 +179,11 @@ const Booking = () => {
         <TabsList className="grid w-full grid-cols-2 mb-8">
           <TabsTrigger value="book" className="flex items-center gap-2">
             <Car className="h-4 w-4" />
-            Book a Tour
+            {t('booking.bookTour')}
           </TabsTrigger>
           <TabsTrigger value="my-bookings" className="flex items-center gap-2">
             <Calendar className="h-4 w-4" />
-            My Bookings ({bookings.length})
+            {t('booking.myBookings')} ({bookings.length})
           </TabsTrigger>
         </TabsList>
 
@@ -189,7 +191,7 @@ const Booking = () => {
           <div className="grid md:grid-cols-2 gap-6">
             {/* Tour Selection */}
             <div>
-              <h2 className="text-2xl font-bold mb-6">Choose Your Experience</h2>
+              <h2 className="text-2xl font-bold mb-6">{t('booking.chooseExperience')}</h2>
               <div className="space-y-4">
                 {tours.map((tour) => (
                   <Card 
@@ -207,7 +209,7 @@ const Booking = () => {
                         </div>
                         <div className="text-right">
                           <div className="font-bold text-primary">{tour.price}</div>
-                          <div className="text-xs text-muted-foreground">per person</div>
+                          <div className="text-xs text-muted-foreground">{t('booking.perPerson')}</div>
                         </div>
                       </div>
                     </CardHeader>
@@ -219,7 +221,7 @@ const Booking = () => {
                         </div>
                         <div className="flex items-center gap-1">
                           <Users className="h-4 w-4" />
-                          Max {tour.maxParticipants}
+                          {t('booking.maxPeople')} {tour.maxParticipants}
                         </div>
                         <Badge variant={
                           tour.difficulty === 'Easy' ? 'secondary' : 
@@ -230,7 +232,7 @@ const Booking = () => {
                       </div>
                       <div className="grid grid-cols-2 gap-4 text-xs">
                         <div>
-                          <div className="font-medium mb-1">Highlights</div>
+                          <div className="font-medium mb-1">{t('booking.highlights')}</div>
                           <ul className="text-muted-foreground space-y-0.5">
                             {tour.highlights.slice(0, 2).map((highlight, idx) => (
                               <li key={idx}>• {highlight}</li>
@@ -238,7 +240,7 @@ const Booking = () => {
                           </ul>
                         </div>
                         <div>
-                          <div className="font-medium mb-1">Includes</div>
+                          <div className="font-medium mb-1">{t('booking.includes')}</div>
                           <ul className="text-muted-foreground space-y-0.5">
                             {tour.includes.slice(0, 2).map((include, idx) => (
                               <li key={idx}>• {include}</li>
@@ -254,12 +256,12 @@ const Booking = () => {
 
             {/* Booking Form */}
             <div>
-              <h2 className="text-2xl font-bold mb-6">Booking Details</h2>
+              <h2 className="text-2xl font-bold mb-6">{t('booking.bookingDetails')}</h2>
               <Card>
                 <CardContent className="p-6 space-y-4">
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <Label htmlFor="date">Date *</Label>
+                      <Label htmlFor="date">{t('booking.date')} *</Label>
                       <Input
                         id="date"
                         type="date"
@@ -269,7 +271,7 @@ const Booking = () => {
                       />
                     </div>
                     <div>
-                      <Label htmlFor="time">Time *</Label>
+                      <Label htmlFor="time">{t('booking.time')} *</Label>
                       <Input
                         id="time"
                         type="time"
@@ -280,7 +282,7 @@ const Booking = () => {
                   </div>
 
                   <div>
-                    <Label htmlFor="participants">Number of Participants *</Label>
+                    <Label htmlFor="participants">{t('booking.participants')} *</Label>
                     <Input
                       id="participants"
                       type="number"
@@ -288,49 +290,49 @@ const Booking = () => {
                       max={selectedTour ? tours.find(t => t.id === selectedTour)?.maxParticipants : 10}
                       value={formData.participants}
                       onChange={(e) => handleInputChange('participants', e.target.value)}
-                      placeholder="Enter number of people"
+                      placeholder={t('booking.placeholders.participants')}
                     />
                   </div>
 
                   <div>
-                    <Label htmlFor="name">Full Name *</Label>
+                    <Label htmlFor="name">{t('booking.fullName')} *</Label>
                     <Input
                       id="name"
                       value={formData.name}
                       onChange={(e) => handleInputChange('name', e.target.value)}
-                      placeholder="Enter your full name"
+                      placeholder={t('booking.placeholders.fullName')}
                     />
                   </div>
 
                   <div>
-                    <Label htmlFor="phone">Phone Number *</Label>
+                    <Label htmlFor="phone">{t('booking.phone')} *</Label>
                     <Input
                       id="phone"
                       type="tel"
                       value={formData.phone}
                       onChange={(e) => handleInputChange('phone', e.target.value)}
-                      placeholder="+966 xxx xxx xxx"
+                      placeholder={t('booking.placeholders.phone')}
                     />
                   </div>
 
                   <div>
-                    <Label htmlFor="email">Email Address</Label>
+                    <Label htmlFor="email">{t('booking.email')}</Label>
                     <Input
                       id="email"
                       type="email"
                       value={formData.email}
                       onChange={(e) => handleInputChange('email', e.target.value)}
-                      placeholder="your@email.com"
+                      placeholder={t('booking.placeholders.email')}
                     />
                   </div>
 
                   <div>
-                    <Label htmlFor="requests">Special Requests</Label>
+                    <Label htmlFor="requests">{t('booking.specialRequests')}</Label>
                     <Textarea
                       id="requests"
                       value={formData.specialRequests}
                       onChange={(e) => handleInputChange('specialRequests', e.target.value)}
-                      placeholder="Any special requirements or requests..."
+                      placeholder={t('booking.placeholders.specialRequests')}
                       rows={3}
                     />
                   </div>
@@ -341,7 +343,7 @@ const Booking = () => {
                     className="w-full"
                     size="lg"
                   >
-                    {selectedTour ? 'Book Now' : 'Select a Tour First'}
+                    {selectedTour ? t('booking.bookNow') : t('booking.selectTour')}
                   </Button>
                 </CardContent>
               </Card>
@@ -351,7 +353,7 @@ const Booking = () => {
 
         <TabsContent value="my-bookings">
           <div className="space-y-6">
-            <h2 className="text-2xl font-bold">My Bookings</h2>
+            <h2 className="text-2xl font-bold">{t('booking.myBookings')}</h2>
             {bookings.length === 0 ? (
               <Card className="h-64 flex items-center justify-center">
                 <div className="text-center">
