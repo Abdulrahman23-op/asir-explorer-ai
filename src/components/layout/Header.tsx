@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Menu, MapPin, Settings, Sun, Moon } from "lucide-react";
+import { Menu, Settings, Sun, Moon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { useTheme } from "next-themes";
@@ -27,13 +27,11 @@ const Header = () => {
       <div className="container flex h-16 items-center justify-between px-4">
         {/* Logo Section */}
         <div className="flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-primary to-accent">
-            <MapPin className="h-6 w-6 text-primary-foreground" />
-          </div>
-          <div>
-            <h1 className="text-xl font-bold text-foreground">Mazar</h1>
-            <p className="text-xs text-muted-foreground">Asir Explorer</p>
-          </div>
+          <img 
+            src="/lovable-uploads/f8529688-ce78-4a00-9c31-be982d61e9a8.png" 
+            alt="Mazar Logo" 
+            className="h-12 w-auto"
+          />
         </div>
 
         {/* Desktop Navigation */}
@@ -84,13 +82,11 @@ const Header = () => {
             <SheetContent side="right" className="w-80">
               <div className="flex flex-col gap-4 pt-6">
                 <div className="flex items-center gap-3 pb-4 border-b">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-primary to-accent">
-                    <MapPin className="h-6 w-6 text-primary-foreground" />
-                  </div>
-                  <div>
-                    <h2 className="text-lg font-bold">Mazar</h2>
-                    <p className="text-sm text-muted-foreground">Asir Explorer</p>
-                  </div>
+                  <img 
+                    src="/lovable-uploads/f8529688-ce78-4a00-9c31-be982d61e9a8.png" 
+                    alt="Mazar Logo" 
+                    className="h-10 w-auto"
+                  />
                 </div>
                 
                 <nav className="flex flex-col gap-2">
