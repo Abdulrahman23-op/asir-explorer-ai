@@ -9,6 +9,9 @@ import NotFound from "./pages/NotFound";
 import Layout from "./components/layout/Layout";
 import SmartMap from "./pages/SmartMap";
 import SmartCamera from "./pages/SmartCamera";
+import VirtualGuide from "./pages/VirtualGuide";
+import Booking from "./pages/Booking";
+import Events from "./pages/Events";
 
 const queryClient = new QueryClient();
 
@@ -24,6 +27,9 @@ const App = () => (
               <Route path="/" element={<Index />} />
               <Route path="/map" element={<SmartMap />} />
               <Route path="/camera" element={<SmartCamera />} />
+              <Route path="/guide" element={<VirtualGuide />} />
+              <Route path="/booking" element={<Booking />} />
+              <Route path="/events" element={<Events />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
