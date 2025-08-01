@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { useTranslation } from "react-i18next";
 import { 
   Camera, 
   Upload, 
@@ -17,6 +18,7 @@ import {
 const SmartCamera = () => {
   const [isScanning, setIsScanning] = useState(false);
   const [recognizedLandmark, setRecognizedLandmark] = useState<any>(null);
+  const { t } = useTranslation();
 
   const handleScan = () => {
     setIsScanning(true);
@@ -72,8 +74,8 @@ const SmartCamera = () => {
     <div className="container mx-auto px-4 py-6 space-y-6">
       {/* Header */}
       <div className="text-center space-y-2">
-        <h1 className="text-3xl font-bold text-foreground">Smart Camera</h1>
-        <p className="text-muted-foreground">AI-powered landmark recognition for Asir region</p>
+        <h1 className="text-3xl font-bold text-foreground">{t("camera.title")}</h1>
+        <p className="text-muted-foreground">{t("camera.subtitle")}</p>
       </div>
 
       {/* Camera Interface */}

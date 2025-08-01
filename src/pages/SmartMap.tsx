@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
+import { useTranslation } from "react-i18next";
 import { 
   MapPin, 
   Navigation, 
@@ -19,13 +20,14 @@ import {
 const SmartMap = () => {
   const [selectedFilter, setSelectedFilter] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
+  const { t } = useTranslation();
 
   const filters = [
-    { id: "all", label: "All", icon: MapPin },
-    { id: "mountains", label: "Mountains", icon: Mountain },
-    { id: "heritage", label: "Heritage", icon: Building },
-    { id: "nature", label: "Nature", icon: TreePine },
-    { id: "dining", label: "Dining", icon: Utensils },
+    { id: "all", label: t("common.all"), icon: MapPin },
+    { id: "mountains", label: t("map.categories.mountains"), icon: Mountain },
+    { id: "heritage", label: t("map.categories.heritage"), icon: Building },
+    { id: "nature", label: t("map.categories.nature"), icon: TreePine },
+    { id: "dining", label: t("map.categories.dining"), icon: Utensils },
   ];
 
   const landmarks = [
@@ -108,12 +110,12 @@ const SmartMap = () => {
       <div className="flex flex-col space-y-4">
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-foreground">Smart Map</h1>
-            <p className="text-muted-foreground">Discover Asir's attractions with AI-powered navigation</p>
+            <h1 className="text-3xl font-bold text-foreground">{t("map.title")}</h1>
+            <p className="text-muted-foreground">{t("map.subtitle")}</p>
           </div>
           <Button className="gap-2">
             <Navigation className="h-4 w-4" />
-            My Location
+            {t("map.myLocation")}
           </Button>
         </div>
 
@@ -121,7 +123,7 @@ const SmartMap = () => {
         <div className="relative">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
           <Input
-            placeholder="Search landmarks, attractions, restaurants..."
+            placeholder={t("common.search")}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="pl-10"

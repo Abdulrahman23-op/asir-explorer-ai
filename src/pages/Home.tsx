@@ -1,202 +1,258 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { MapPin, Camera, MessageCircle, Calendar, Shield, Star } from "lucide-react";
+import { useTranslation } from "react-i18next";
+import { 
+  MapPin, 
+  Camera, 
+  MessageCircle, 
+  Car, 
+  Calendar,
+  ArrowRight,
+  Shield,
+  Thermometer,
+  Clock,
+  Star
+} from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Home = () => {
+  const { t } = useTranslation();
+
   const quickActions = [
     {
-      title: "Smart Map",
-      description: "Explore Asir with interactive maps",
+      title: t("home.exploreMap"),
+      description: "Interactive maps and navigation",
       icon: MapPin,
-      path: "/map",
-      color: "bg-gradient-to-br from-primary to-primary/80",
+      href: "/map",
+      color: "bg-blue-500"
     },
     {
-      title: "Smart Camera",
+      title: t("home.scanLandmark"),
       description: "AI-powered landmark recognition",
       icon: Camera,
-      path: "/camera",
-      color: "bg-gradient-to-br from-accent to-accent/80",
+      href: "/camera",
+      color: "bg-green-500"
     },
     {
-      title: "Virtual Guide",
-      description: "Chat with AI about local culture",
+      title: t("home.virtualGuide"),
+      description: "Your AI travel companion",
       icon: MessageCircle,
-      path: "/guide",
-      color: "bg-gradient-to-br from-secondary to-secondary/80",
+      href: "/guide",
+      color: "bg-purple-500"
     },
+    {
+      title: t("home.book4x4"),
+      description: "Off-road mountain adventures",
+      icon: Car,
+      href: "/booking",
+      color: "bg-orange-500"
+    },
+    {
+      title: t("home.viewEvents"),
+      description: "Cultural events and festivals",
+      icon: Calendar,
+      href: "/events",
+      color: "bg-red-500"
+    }
   ];
 
-  const destinations = [
+  const featuredDestinations = [
     {
-      name: "Al Soudah",
-      description: "Mountain resort with cable cars",
-      image: "🏔️",
-      temp: "18°C",
+      id: 1,
+      name: "Al Soudah Park",
+      description: "Cable car rides and stunning mountain views",
+      temperature: "18°C",
       difficulty: "Easy",
+      image: "🏔️",
+      rating: 4.8
     },
     {
-      name: "Rijal Almaa",
-      description: "Historic heritage village",
-      image: "🏘️",
-      temp: "22°C",
+      id: 2,
+      name: "Rijal Almaa Village",
+      description: "Traditional stone architecture and heritage",
+      temperature: "22°C",
       difficulty: "Moderate",
+      image: "🏘️",
+      rating: 4.7
     },
     {
-      name: "Habala",
-      description: "Hanging village experience",
-      image: "🌲",
-      temp: "20°C",
+      id: 3,
+      name: "Habala Hanging Village",
+      description: "Suspended village adventure experience",
+      temperature: "16°C",
       difficulty: "Challenging",
-    },
+      image: "🌲",
+      rating: 4.9
+    }
   ];
 
   return (
-    <div className="container mx-auto px-4 py-6 space-y-8">
+    <div className="min-h-screen bg-gradient-to-br from-background to-muted/30">
       {/* Hero Section */}
-      <section className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-primary via-primary/90 to-accent p-8 text-primary-foreground">
-        <div className="relative z-10">
-          <div className="mb-6">
-            <Badge variant="secondary" className="mb-4">
-              Welcome to Mazar
-            </Badge>
-            <h1 className="text-4xl font-bold mb-4">
-              Discover Asir's Hidden Treasures
+      <section className="relative py-20 px-4">
+        <div className="container mx-auto text-center space-y-6">
+          <div className="space-y-4">
+            <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+              {t("home.welcome")}
             </h1>
-            <p className="text-lg opacity-90 mb-6 max-w-2xl">
-              Your AI-powered guide to the most beautiful region in Saudi Arabia. 
-              Explore mountains, heritage villages, and cultural experiences with smart recommendations.
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              {t("home.subtitle")}
             </p>
           </div>
           
-          <div className="flex flex-wrap gap-4">
-            <Link to="/map">
-              <Button variant="secondary" size="lg" className="gap-2">
+          <div className="flex flex-wrap gap-4 justify-center">
+            <Button size="lg" className="gap-2" asChild>
+              <Link to="/map">
                 <MapPin className="h-5 w-5" />
-                Start Exploring
-              </Button>
-            </Link>
-            <Link to="/recommendations">
-              <Button variant="outline" size="lg" className="gap-2 border-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/10">
-                <Star className="h-5 w-5" />
-                Get Recommendations
-              </Button>
-            </Link>
+                Explore Now
+              </Link>
+            </Button>
+            <Button size="lg" variant="outline" className="gap-2" asChild>
+              <Link to="/guide">
+                <MessageCircle className="h-5 w-5" />
+                Get Guide
+              </Link>
+            </Button>
           </div>
         </div>
-        
-        {/* Background decorations */}
-        <div className="absolute top-4 right-4 text-6xl opacity-20">🏔️</div>
-        <div className="absolute bottom-4 left-4 text-4xl opacity-20">🌲</div>
       </section>
 
-      {/* Quick Actions */}
-      <section className="space-y-4">
-        <h2 className="text-2xl font-bold text-foreground">Quick Actions</h2>
-        <div className="grid md:grid-cols-3 gap-4">
-          {quickActions.map((action) => {
-            const Icon = action.icon;
-            return (
-              <Link key={action.path} to={action.path}>
-                <Card className="hover:shadow-lg transition-all duration-300 hover:scale-105 cursor-pointer border-0 overflow-hidden">
-                  <div className={`${action.color} p-6`}>
-                    <Icon className="h-8 w-8 text-white mb-3" />
-                    <h3 className="text-lg font-semibold text-white mb-2">
-                      {action.title}
-                    </h3>
-                    <p className="text-white/90 text-sm">
-                      {action.description}
-                    </p>
-                  </div>
-                </Card>
+      <div className="container mx-auto px-4 py-8 space-y-12">
+        {/* Quick Actions */}
+        <section className="space-y-6">
+          <h2 className="text-3xl font-bold text-center">{t("home.quickActions")}</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+            {quickActions.map((action, index) => (
+              <Card key={index} className="hover:shadow-lg transition-all duration-300 group cursor-pointer">
+                <Link to={action.href}>
+                  <CardContent className="p-6 text-center space-y-4">
+                    <div className={`w-12 h-12 rounded-full ${action.color} flex items-center justify-center mx-auto group-hover:scale-110 transition-transform`}>
+                      <action.icon className="h-6 w-6 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold mb-2">{action.title}</h3>
+                      <p className="text-sm text-muted-foreground">{action.description}</p>
+                    </div>
+                  </CardContent>
+                </Link>
+              </Card>
+            ))}
+          </div>
+        </section>
+
+        {/* Featured Destinations */}
+        <section className="space-y-6">
+          <div className="flex items-center justify-between">
+            <h2 className="text-3xl font-bold">{t("home.featuredDestinations")}</h2>
+            <Button variant="outline" className="gap-2" asChild>
+              <Link to="/map">
+                View All
+                <ArrowRight className="h-4 w-4" />
               </Link>
-            );
-          })}
-        </div>
-      </section>
-
-      {/* Featured Destinations */}
-      <section className="space-y-4">
-        <div className="flex items-center justify-between">
-          <h2 className="text-2xl font-bold text-foreground">Featured Destinations</h2>
-          <Link to="/map">
-            <Button variant="outline" size="sm">View All</Button>
-          </Link>
-        </div>
-        
-        <div className="grid md:grid-cols-3 gap-4">
-          {destinations.map((destination) => (
-            <Card key={destination.name} className="hover:shadow-lg transition-shadow">
-              <CardHeader className="pb-3">
-                <div className="flex items-center justify-between">
-                  <div className="text-3xl">{destination.image}</div>
-                  <Badge variant="outline">{destination.temp}</Badge>
+            </Button>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {featuredDestinations.map((destination) => (
+              <Card key={destination.id} className="overflow-hidden hover:shadow-lg transition-shadow">
+                <div className="aspect-video bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center text-6xl">
+                  {destination.image}
                 </div>
-                <CardTitle className="text-lg">{destination.name}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground text-sm mb-3">
-                  {destination.description}
-                </p>
-                <div className="flex items-center justify-between">
-                  <Badge 
-                    variant={destination.difficulty === "Easy" ? "default" : destination.difficulty === "Moderate" ? "secondary" : "destructive"}
-                  >
-                    {destination.difficulty}
-                  </Badge>
-                  <Link to="/map">
-                    <Button size="sm" variant="ghost">
-                      Explore →
+                <CardContent className="p-6">
+                  <div className="space-y-3">
+                    <div className="flex items-start justify-between">
+                      <h3 className="text-xl font-semibold">{destination.name}</h3>
+                      <div className="flex items-center gap-1">
+                        <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                        <span className="text-sm font-medium">{destination.rating}</span>
+                      </div>
+                    </div>
+                    
+                    <p className="text-muted-foreground">{destination.description}</p>
+                    
+                    <div className="flex items-center gap-4 text-sm">
+                      <div className="flex items-center gap-1">
+                        <Thermometer className="h-4 w-4" />
+                        {destination.temperature}
+                      </div>
+                      <Badge variant="outline">{destination.difficulty}</Badge>
+                    </div>
+                    
+                    <Button className="w-full gap-2">
+                      <MapPin className="h-4 w-4" />
+                      Explore
                     </Button>
-                  </Link>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </section>
+
+        {/* Safety Status & Events */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {/* Safety Status */}
+          <Card className="border-green-200 bg-green-50 dark:bg-green-950 dark:border-green-800">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2 text-green-800 dark:text-green-200">
+                <Shield className="h-5 w-5" />
+                {t("home.safetyStatus")}
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="space-y-2">
+                <div className="flex items-center gap-2">
+                  <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                  <span className="text-sm">All hiking trails are safe</span>
                 </div>
-              </CardContent>
-            </Card>
-          ))}
+                <div className="flex items-center gap-2">
+                  <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                  <span className="text-sm">Weather conditions: Excellent</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                  <span className="text-sm">High altitude areas: Use caution</span>
+                </div>
+              </div>
+              <p className="text-xs text-muted-foreground">
+                Last updated: 2 hours ago
+              </p>
+            </CardContent>
+          </Card>
+
+          {/* Upcoming Events */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Calendar className="h-5 w-5" />
+                {t("home.upcomingEvents")}
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="flex items-center justify-between p-3 rounded-lg bg-muted/50">
+                <div>
+                  <h4 className="font-medium">Asir Heritage Festival</h4>
+                  <p className="text-sm text-muted-foreground">Abha Cultural Center</p>
+                </div>
+                <div className="text-right">
+                  <Badge variant="outline">Cultural</Badge>
+                  <p className="text-sm text-muted-foreground mt-1">
+                    <Clock className="h-3 w-3 inline mr-1" />
+                    Dec 15-20
+                  </p>
+                </div>
+              </div>
+              
+              <Button variant="outline" className="w-full gap-2" asChild>
+                <Link to="/events">
+                  View All Events
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              </Button>
+            </CardContent>
+          </Card>
         </div>
-      </section>
-
-      {/* Safety & Events */}
-      <div className="grid md:grid-cols-2 gap-6">
-        <Card className="border-amber-200 bg-amber-50 dark:border-amber-800 dark:bg-amber-950/20">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2 text-amber-800 dark:text-amber-200">
-              <Shield className="h-5 w-5" />
-              Safety Status
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-sm text-amber-700 dark:text-amber-300 mb-3">
-              All major routes are clear. Weather conditions are optimal for hiking.
-            </p>
-            <Link to="/safety">
-              <Button variant="outline" size="sm" className="border-amber-300 text-amber-800 hover:bg-amber-100">
-                View Details
-              </Button>
-            </Link>
-          </CardContent>
-        </Card>
-
-        <Card className="border-blue-200 bg-blue-50 dark:border-blue-800 dark:bg-blue-950/20">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2 text-blue-800 dark:text-blue-200">
-              <Calendar className="h-5 w-5" />
-              Upcoming Events
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-sm text-blue-700 dark:text-blue-300 mb-3">
-              Soudah Season starts in 2 days! Don't miss cultural performances.
-            </p>
-            <Link to="/events">
-              <Button variant="outline" size="sm" className="border-blue-300 text-blue-800 hover:bg-blue-100">
-                View Calendar
-              </Button>
-            </Link>
-          </CardContent>
-        </Card>
       </div>
     </div>
   );

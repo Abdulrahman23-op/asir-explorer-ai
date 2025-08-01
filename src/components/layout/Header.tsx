@@ -4,23 +4,22 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { useTheme } from "next-themes";
 import { Link, useLocation } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { theme, setTheme } = useTheme();
   const location = useLocation();
+  const { t } = useTranslation();
 
   const navigationItems = [
-    { label: "Home", path: "/", icon: "🏠" },
-    { label: "Smart Map", path: "/map", icon: "🗺️" },
-    { label: "Smart Camera", path: "/camera", icon: "📷" },
-    { label: "Virtual Guide", path: "/guide", icon: "🤖" },
-    { label: "4x4 Booking", path: "/booking", icon: "🚗" },
-    { label: "Events", path: "/events", icon: "📅" },
-    { label: "Recommendations", path: "/recommendations", icon: "⭐" },
-    { label: "Experiences", path: "/experiences", icon: "🎭" },
-    { label: "Safety", path: "/safety", icon: "🛡️" },
-    { label: "Offline", path: "/offline", icon: "📱" },
+    { label: t("nav.home"), path: "/", icon: "🏠" },
+    { label: t("nav.map"), path: "/map", icon: "🗺️" },
+    { label: t("nav.camera"), path: "/camera", icon: "📷" },
+    { label: t("nav.guide"), path: "/guide", icon: "🤖" },
+    { label: t("nav.booking"), path: "/booking", icon: "🚗" },
+    { label: t("nav.events"), path: "/events", icon: "📅" },
   ];
 
   return (
@@ -57,6 +56,8 @@ const Header = () => {
 
         {/* Right Side Actions */}
         <div className="flex items-center gap-2">
+          <LanguageSwitcher />
+          
           <Button
             variant="ghost"
             size="icon"
