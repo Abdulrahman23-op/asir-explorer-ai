@@ -90,11 +90,11 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-background to-muted/30">
       {/* Hero Section */}
-      <section className="relative py-20 px-4 cultural-border-pattern">
+      <section className="relative py-24 px-4 cultural-border-pattern mb-8">
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-10 left-10 w-20 h-20 opacity-20">
+          <div className="absolute top-10 left-10 w-32 h-32 opacity-80">
             <img 
-              src="/lovable-uploads/fa510cc7-6bd1-4f1b-9ab8-a8eb31518f79.png" 
+              src="/lovable-uploads/3f1fa2c3-a472-4d3e-b908-c3f8f93d9ff4.png" 
               alt="Mazar Logo Decoration" 
               className="w-full h-full object-contain"
             />
@@ -104,11 +104,11 @@ const Home = () => {
           }}></div>
         </div>
         <div className="container mx-auto text-center space-y-6 relative">
-          <div className="space-y-4">
-            <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent leading-relaxed">
+          <div className="space-y-6">
+            <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent leading-relaxed min-h-[120px] md:min-h-[180px] flex items-center justify-center">
               {t("home.welcome")}
             </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
               {t("home.subtitle")}
             </p>
           </div>
