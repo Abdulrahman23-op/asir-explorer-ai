@@ -51,22 +51,22 @@ const SmartCamera = () => {
 
   const landmarkExamples = [
     {
-      name: "Rijal Almaa Village",
+      name: t("camera.landmarks.rijal"),
       image: "🏘️",
-      description: "Traditional stone architecture",
-      category: "Heritage Site"
+      description: t("camera.landmarks.rijal_desc"),
+      category: t("camera.landmarks.rijal_category")
     },
     {
-      name: "Habala Hanging Village",
+      name: t("camera.landmarks.habala"),
       image: "🌲",
-      description: "Suspended mountain village",
-      category: "Adventure Site"
+      description: t("camera.landmarks.habala_desc"),
+      category: t("camera.landmarks.habala_category")
     },
     {
-      name: "Jabal Mareer",
+      name: t("camera.landmarks.mareer"),
       image: "🏔️",
-      description: "Highest peak in Asir",
-      category: "Mountain"
+      description: t("camera.landmarks.mareer_desc"),
+      category: t("camera.landmarks.mareer_category")
     }
   ];
 
@@ -83,7 +83,7 @@ const SmartCamera = () => {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Camera className="h-5 w-5" />
-            Live Camera Feed
+            {t("camera.liveFeed")}
           </CardTitle>
         </CardHeader>
         <CardContent>
@@ -94,16 +94,16 @@ const SmartCamera = () => {
                 <div className="text-center space-y-4">
                   <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto"></div>
                   <div className="space-y-2">
-                    <p className="text-lg font-semibold">🔍 Analyzing Image...</p>
-                    <p className="text-sm text-muted-foreground">Using TensorFlow.js for landmark detection</p>
+                    <p className="text-lg font-semibold">🔍 {t("camera.analyzingImage")}</p>
+                    <p className="text-sm text-muted-foreground">{t("camera.usingTensorFlow")}</p>
                   </div>
                 </div>
               ) : (
                 <div className="text-center space-y-4">
                   <div className="text-6xl">📷</div>
                   <div className="space-y-2">
-                    <p className="text-lg font-semibold">Point camera at a landmark</p>
-                    <p className="text-sm text-muted-foreground">AI will identify Asir attractions automatically</p>
+                    <p className="text-lg font-semibold">{t("camera.pointCamera")}</p>
+                    <p className="text-sm text-muted-foreground">{t("camera.aiIdentify")}</p>
                   </div>
                 </div>
               )}
@@ -122,7 +122,7 @@ const SmartCamera = () => {
                     <div className="flex items-center gap-3 mb-2">
                       <Badge variant="default" className="gap-1">
                         <Scan className="h-3 w-3" />
-                        {recognizedLandmark.confidence}% Match
+                        {recognizedLandmark.confidence}% {t("camera.match")}
                       </Badge>
                       <Badge variant="outline">{recognizedLandmark.category}</Badge>
                     </div>
@@ -142,7 +142,7 @@ const SmartCamera = () => {
               className="gap-2 flex-1 sm:flex-none"
             >
               <Scan className="h-4 w-4" />
-              {isScanning ? "Scanning..." : "Scan Now"}
+              {isScanning ? t("camera.scanning") : t("camera.scanNow")}
             </Button>
             <Button 
               variant="outline" 
@@ -150,7 +150,7 @@ const SmartCamera = () => {
               className="gap-2 flex-1 sm:flex-none"
             >
               <Upload className="h-4 w-4" />
-              Upload Photo
+              {t("camera.uploadPhoto")}
             </Button>
           </div>
         </CardContent>
@@ -162,7 +162,7 @@ const SmartCamera = () => {
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Info className="h-5 w-5" />
-              Landmark Information
+              {t("camera.landmarkInfo")}
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-6">
@@ -170,7 +170,7 @@ const SmartCamera = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-3">
                 <div>
-                  <h3 className="font-semibold mb-1">Location Details</h3>
+                  <h3 className="font-semibold mb-1">{t("camera.locationDetails")}</h3>
                   <div className="flex items-center gap-2 text-sm text-muted-foreground">
                     <MapPin className="h-4 w-4" />
                     {recognizedLandmark.coordinates}
@@ -182,14 +182,14 @@ const SmartCamera = () => {
                 </div>
                 
                 <div>
-                  <h3 className="font-semibold mb-1">Rating</h3>
+                  <h3 className="font-semibold mb-1">{t("camera.rating")}</h3>
                   <div className="flex items-center gap-2">
                     <div className="flex items-center gap-1">
                       <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
                       <span className="font-medium">{recognizedLandmark.rating}</span>
                     </div>
                     <span className="text-sm text-muted-foreground">
-                      ({recognizedLandmark.reviews} reviews)
+                      ({recognizedLandmark.reviews} {t("camera.reviews")})
                     </span>
                   </div>
                 </div>
@@ -197,7 +197,7 @@ const SmartCamera = () => {
 
               <div className="space-y-3">
                 <div>
-                  <h3 className="font-semibold mb-2">Historical Information</h3>
+                  <h3 className="font-semibold mb-2">{t("camera.historicalInfo")}</h3>
                   <p className="text-sm text-muted-foreground">
                     {recognizedLandmark.historicalInfo}
                   </p>
@@ -207,7 +207,7 @@ const SmartCamera = () => {
 
             {/* Tips */}
             <div>
-              <h3 className="font-semibold mb-2">Visitor Tips</h3>
+              <h3 className="font-semibold mb-2">{t("camera.tips")}</h3>
               <div className="grid gap-2">
                 {recognizedLandmark.tips.map((tip: string, index: number) => (
                   <div key={index} className="flex items-start gap-2 text-sm">
@@ -222,15 +222,15 @@ const SmartCamera = () => {
             <div className="flex flex-wrap gap-3 pt-4 border-t">
               <Button className="gap-2">
                 <MapPin className="h-4 w-4" />
-                View on Map
+                {t("camera.viewOnMap")}
               </Button>
               <Button variant="outline" className="gap-2">
                 <Building className="h-4 w-4" />
-                Virtual Tour
+                {t("camera.virtualTour")}
               </Button>
               <Button variant="outline" className="gap-2">
                 <Clock className="h-4 w-4" />
-                Add to Itinerary
+                {t("camera.addToItinerary")}
               </Button>
             </div>
           </CardContent>
@@ -240,7 +240,7 @@ const SmartCamera = () => {
       {/* Examples */}
       <Card>
         <CardHeader>
-          <CardTitle>Try Recognizing These Landmarks</CardTitle>
+          <CardTitle>{t("camera.tryRecognizing")}</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">

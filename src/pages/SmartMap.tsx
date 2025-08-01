@@ -155,9 +155,9 @@ const SmartMap = () => {
         <CardContent className="h-full flex items-center justify-center">
           <div className="text-center space-y-3">
             <div className="text-6xl">🗺️</div>
-            <h3 className="text-lg font-semibold text-foreground">Interactive Map</h3>
-            <p className="text-muted-foreground">Real-time GPS tracking and route navigation</p>
-            <Badge variant="secondary">Maps Integration Coming Soon</Badge>
+            <h3 className="text-lg font-semibold text-foreground">{t("map.interactiveMap")}</h3>
+            <p className="text-muted-foreground">{t("map.realTimeGps")}</p>
+            <Badge variant="secondary">{t("map.mapComing")}</Badge>
           </div>
         </CardContent>
       </Card>
@@ -166,11 +166,11 @@ const SmartMap = () => {
       <div className="space-y-4">
         <div className="flex items-center justify-between">
           <h2 className="text-xl font-semibold">
-            {filteredLandmarks.length} destinations found
+            {filteredLandmarks.length} {t("map.destinationsFound")}
           </h2>
           <Button variant="outline" size="sm" className="gap-2">
             <Filter className="h-4 w-4" />
-            More Filters
+            {t("map.moreFilters")}
           </Button>
         </div>
 
@@ -191,7 +191,7 @@ const SmartMap = () => {
                     </div>
                   </div>
                   <Badge className={getDifficultyColor(landmark.difficulty)}>
-                    {landmark.difficulty}
+                    {t(`map.difficultyLevels.${landmark.difficulty.toLowerCase()}`)}
                   </Badge>
                 </div>
               </CardHeader>
@@ -214,13 +214,13 @@ const SmartMap = () => {
                 <div className="flex flex-wrap gap-2">
                   <Button size="sm" className="gap-2">
                     <Navigation className="h-4 w-4" />
-                    Navigate
+                    {t("map.navigate")}
                   </Button>
                   <Button variant="outline" size="sm">
-                    Details
+                    {t("map.details")}
                   </Button>
                   <Button variant="outline" size="sm">
-                    Save
+                    {t("map.save")}
                   </Button>
                 </div>
               </CardContent>
