@@ -38,17 +38,43 @@ const resources = {
       },
       // Home page
       home: {
-        welcome: "Welcome to Asir Explorer AI",
+        welcome: "Welcome to Smart Asir Explorer",
         subtitle: "Discover the beauty of Asir region with AI-powered exploration",
+        exploreNow: "Explore Now",
+        getGuide: "Get Guide",
         quickActions: "Quick Actions",
-        featuredDestinations: "Featured Destinations",
-        safetyStatus: "Safety Status",
-        upcomingEvents: "Upcoming Events",
         exploreMap: "Explore Interactive Map",
+        exploreMapDesc: "Interactive maps and navigation",
         scanLandmark: "Scan Landmarks with AI",
+        scanLandmarkDesc: "AI-powered landmark recognition",
         virtualGuide: "Get Virtual Guide",
+        virtualGuideDesc: "Your AI travel companion",
         book4x4: "Book 4x4 Adventure",
-        viewEvents: "View Local Events"
+        book4x4Desc: "Off-road mountain adventures",
+        viewEvents: "View Local Events",
+        viewEventsDesc: "Cultural events and festivals",
+        featuredDestinations: "Featured Destinations",
+        viewAll: "View All",
+        alSoudahPark: "Al Soudah Park",
+        alSoudahDesc: "Cable car rides and stunning mountain views",
+        rijalAlmaaVillage: "Rijal Almaa Village",
+        rijalAlmaaDesc: "Traditional stone architecture and heritage",
+        habalaVillage: "Habala Hanging Village",
+        habalaDesc: "Suspended village adventure experience",
+        easy: "Easy",
+        moderate: "Moderate",
+        challenging: "Challenging",
+        explore: "Explore",
+        safetyStatus: "Safety Status",
+        trailsSafe: "All hiking trails are safe",
+        weatherExcellent: "Weather conditions: Excellent",
+        highAltitude: "High altitude areas: Use caution",
+        lastUpdated: "Last updated: 2 hours ago",
+        upcomingEvents: "Upcoming Events",
+        asirFestival: "Asir Heritage Festival",
+        abhaCenter: "Abha Cultural Center",
+        cultural: "Cultural",
+        viewAllEvents: "View All Events"
       },
       // Smart Map
       map: {
@@ -226,7 +252,7 @@ const resources = {
       }
     }
   },
-  ar: {
+    ar: {
     translation: {
       // Navigation
       nav: {
@@ -263,15 +289,41 @@ const resources = {
       home: {
         welcome: "مرحباً بك في مستكشف عسير الذكي",
         subtitle: "اكتشف جمال منطقة عسير مع الاستكشاف المدعوم بالذكاء الاصطناعي",
+        exploreNow: "استكشف الآن",
+        getGuide: "احصل على المرشد",
         quickActions: "الإجراءات السريعة",
-        featuredDestinations: "الوجهات المميزة",
-        safetyStatus: "حالة السلامة",
-        upcomingEvents: "الفعاليات القادمة",
         exploreMap: "استكشف الخريطة التفاعلية",
+        exploreMapDesc: "خرائط تفاعلية وملاحة",
         scanLandmark: "امسح المعالم بالذكاء الاصطناعي",
+        scanLandmarkDesc: "التعرف على المعالم بالذكاء الاصطناعي",
         virtualGuide: "احصل على مرشد افتراضي",
+        virtualGuideDesc: "رفيق السفر الذكي",
         book4x4: "احجز مغامرة الدفع الرباعي",
-        viewEvents: "عرض الفعاليات المحلية"
+        book4x4Desc: "مغامرات جبلية بالسيارات الرباعية",
+        viewEvents: "عرض الفعاليات المحلية",
+        viewEventsDesc: "الفعاليات الثقافية والمهرجانات",
+        featuredDestinations: "الوجهات المميزة",
+        viewAll: "عرض الكل",
+        alSoudahPark: "منتزه السودة",
+        alSoudahDesc: "رحلات التلفريك ومناظر جبلية خلابة",
+        rijalAlmaaVillage: "قرية رجال ألمع",
+        rijalAlmaaDesc: "العمارة الحجرية التقليدية والتراث",
+        habalaVillage: "قرية حبلة المعلقة",
+        habalaDesc: "تجربة قرية معلقة مغامرة",
+        easy: "سهل",
+        moderate: "متوسط",
+        challenging: "صعب",
+        explore: "استكشف",
+        safetyStatus: "حالة السلامة",
+        trailsSafe: "جميع مسارات المشي آمنة",
+        weatherExcellent: "الأحوال الجوية: ممتازة",
+        highAltitude: "المناطق العالية: استخدم الحذر",
+        lastUpdated: "آخر تحديث: منذ ساعتين",
+        upcomingEvents: "الفعاليات القادمة",
+        asirFestival: "مهرجان عسير للتراث",
+        abhaCenter: "مركز أبها الثقافي",
+        cultural: "ثقافي",
+        viewAllEvents: "عرض جميع الفعاليات"
       },
       // Smart Map
       map: {

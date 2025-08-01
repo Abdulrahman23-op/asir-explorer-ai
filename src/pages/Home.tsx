@@ -22,35 +22,35 @@ const Home = () => {
   const quickActions = [
     {
       title: t("home.exploreMap"),
-      description: "Interactive maps and navigation",
+      description: t("home.exploreMapDesc"),
       icon: MapPin,
       href: "/map",
       color: "bg-blue-500"
     },
     {
       title: t("home.scanLandmark"),
-      description: "AI-powered landmark recognition",
+      description: t("home.scanLandmarkDesc"),
       icon: Camera,
       href: "/camera",
       color: "bg-green-500"
     },
     {
       title: t("home.virtualGuide"),
-      description: "Your AI travel companion",
+      description: t("home.virtualGuideDesc"),
       icon: MessageCircle,
       href: "/guide",
       color: "bg-purple-500"
     },
     {
       title: t("home.book4x4"),
-      description: "Off-road mountain adventures",
+      description: t("home.book4x4Desc"),
       icon: Car,
       href: "/booking",
       color: "bg-orange-500"
     },
     {
       title: t("home.viewEvents"),
-      description: "Cultural events and festivals",
+      description: t("home.viewEventsDesc"),
       icon: Calendar,
       href: "/events",
       color: "bg-red-500"
@@ -60,28 +60,28 @@ const Home = () => {
   const featuredDestinations = [
     {
       id: 1,
-      name: "Al Soudah Park",
-      description: "Cable car rides and stunning mountain views",
+      name: t("home.alSoudahPark"),
+      description: t("home.alSoudahDesc"),
       temperature: "18°C",
-      difficulty: "Easy",
+      difficulty: t("home.easy"),
       image: "🏔️",
       rating: 4.8
     },
     {
       id: 2,
-      name: "Rijal Almaa Village",
-      description: "Traditional stone architecture and heritage",
+      name: t("home.rijalAlmaaVillage"),
+      description: t("home.rijalAlmaaDesc"),
       temperature: "22°C",
-      difficulty: "Moderate",
+      difficulty: t("home.moderate"),
       image: "🏘️",
       rating: 4.7
     },
     {
       id: 3,
-      name: "Habala Hanging Village",
-      description: "Suspended village adventure experience",
+      name: t("home.habalaVillage"),
+      description: t("home.habalaDesc"),
       temperature: "16°C",
-      difficulty: "Challenging",
+      difficulty: t("home.challenging"),
       image: "🌲",
       rating: 4.9
     }
@@ -105,13 +105,13 @@ const Home = () => {
             <Button size="lg" className="gap-2" asChild>
               <Link to="/map">
                 <MapPin className="h-5 w-5" />
-                Explore Now
+                {t("home.exploreNow")}
               </Link>
             </Button>
             <Button size="lg" variant="outline" className="gap-2" asChild>
               <Link to="/guide">
                 <MessageCircle className="h-5 w-5" />
-                Get Guide
+                {t("home.getGuide")}
               </Link>
             </Button>
           </div>
@@ -147,7 +147,7 @@ const Home = () => {
             <h2 className="text-3xl font-bold">{t("home.featuredDestinations")}</h2>
             <Button variant="outline" className="gap-2" asChild>
               <Link to="/map">
-                View All
+                {t("home.viewAll")}
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </Button>
@@ -181,7 +181,7 @@ const Home = () => {
                     
                     <Button className="w-full gap-2">
                       <MapPin className="h-4 w-4" />
-                      Explore
+                      {t("home.explore")}
                     </Button>
                   </div>
                 </CardContent>
@@ -204,19 +204,19 @@ const Home = () => {
               <div className="space-y-2">
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 rounded-full bg-green-500"></div>
-                  <span className="text-sm">All hiking trails are safe</span>
+                  <span className="text-sm">{t("home.trailsSafe")}</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 rounded-full bg-green-500"></div>
-                  <span className="text-sm">Weather conditions: Excellent</span>
+                  <span className="text-sm">{t("home.weatherExcellent")}</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                  <span className="text-sm">High altitude areas: Use caution</span>
+                  <span className="text-sm">{t("home.highAltitude")}</span>
                 </div>
               </div>
               <p className="text-xs text-muted-foreground">
-                Last updated: 2 hours ago
+                {t("home.lastUpdated")}
               </p>
             </CardContent>
           </Card>
@@ -232,11 +232,11 @@ const Home = () => {
             <CardContent className="space-y-4">
               <div className="flex items-center justify-between p-3 rounded-lg bg-muted/50">
                 <div>
-                  <h4 className="font-medium">Asir Heritage Festival</h4>
-                  <p className="text-sm text-muted-foreground">Abha Cultural Center</p>
+                  <h4 className="font-medium">{t("home.asirFestival")}</h4>
+                  <p className="text-sm text-muted-foreground">{t("home.abhaCenter")}</p>
                 </div>
                 <div className="text-right">
-                  <Badge variant="outline">Cultural</Badge>
+                  <Badge variant="outline">{t("home.cultural")}</Badge>
                   <p className="text-sm text-muted-foreground mt-1">
                     <Clock className="h-3 w-3 inline mr-1" />
                     Dec 15-20
@@ -246,7 +246,7 @@ const Home = () => {
               
               <Button variant="outline" className="w-full gap-2" asChild>
                 <Link to="/events">
-                  View All Events
+                  {t("home.viewAllEvents")}
                   <ArrowRight className="h-4 w-4" />
                 </Link>
               </Button>
